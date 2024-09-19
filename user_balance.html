@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Saldo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Seu Saldo</h1>
+        <p><strong>Nome:</strong> {{ user_data['full_name'] }}</p>
+        <p><strong>Idade:</strong> {{ user_data['age'] }}</p>
+        <p><strong>Telefone:</strong> {{ user_data['phone'] }}</p>
+        <p><strong>Saldo:</strong> R$ {{ user_data['balance'] }}</p>
+        <form method="post" action="/payment">
+            <button type="submit">Realizar Pagamento</button>
+        </form>
+        <form method="post" action="/withdraw">
+            <label for="withdrawal_amount">Valor para saque:</label>
+            <input type="number" id="withdrawal_amount" name="withdrawal_amount" step="0.01" min="0" required>
+            <button type="submit" name="withdraw">Sacar</button>
+        </form>
+        <form method="post" action="/logout">
+            <button type="submit">Sair</button>
+        </form>
+    </div>
+</body>
+</html>
